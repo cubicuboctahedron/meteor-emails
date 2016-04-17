@@ -16,28 +16,30 @@
           <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
           <a class="small" href="javascript:void(0);">+</a>
           <div id="jump_wrapper">
-          <div id="jump_page">
-            
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
               
-              <a class="source" href="mailer.html">
-                mailer.js
-              </a>
-            
+                
+                <a class="source" href="mailer.html">
+                  mailer.js
+                </a>
               
-              <a class="source" href="routing.html">
-                routing.js
-              </a>
-            
+                
+                <a class="source" href="routing.html">
+                  routing.js
+                </a>
               
-              <a class="source" href="template-helpers.html">
-                template-helpers.js
-              </a>
-            
+                
+                <a class="source" href="template-helpers.html">
+                  template-helpers.js
+                </a>
               
-              <a class="source" href="utils.html">
-                utils.js
-              </a>
-            
+                
+                <a class="source" href="utils.html">
+                  utils.js
+                </a>
+              
+            </div>
           </div>
         </li>
       </ul>
@@ -98,7 +100,7 @@ creates an absolute URL.</p>
     <span class="hljs-keyword">if</span> (theRouter &amp;&amp; theRouter.path) {
       <span class="hljs-keyword">return</span> Utils.joinUrl(Mailer.settings.baseUrl, theRouter.path.call(theRouter, routeName, params.hash));
     } <span class="hljs-keyword">else</span> {
-      Utils.Logger.warn(`We noticed that neither Iron Router nor FlowRouter is installed, thus <span class="hljs-string">'emailUrlFor'</span> can<span class="hljs-string">'t render a path to the route '</span>${routeName}.`);
+      Utils.Logger.warn(<span class="hljs-string">`We noticed that neither Iron Router nor FlowRouter is installed, thus 'emailUrlFor' can't render a path to the route '<span class="hljs-subst">${routeName}</span>.`</span>);
       <span class="hljs-keyword">return</span> <span class="hljs-string">'//'</span>;
     }
   }

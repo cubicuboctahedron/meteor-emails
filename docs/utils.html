@@ -16,28 +16,30 @@
           <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
           <a class="small" href="javascript:void(0);">+</a>
           <div id="jump_wrapper">
-          <div id="jump_page">
-            
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
               
-              <a class="source" href="mailer.html">
-                mailer.js
-              </a>
-            
+                
+                <a class="source" href="mailer.html">
+                  mailer.js
+                </a>
               
-              <a class="source" href="routing.html">
-                routing.js
-              </a>
-            
+                
+                <a class="source" href="routing.html">
+                  routing.js
+                </a>
               
-              <a class="source" href="template-helpers.html">
-                template-helpers.js
-              </a>
-            
+                
+                <a class="source" href="template-helpers.html">
+                  template-helpers.js
+                </a>
               
-              <a class="source" href="utils.html">
-                utils.js
-              </a>
-            
+                
+                <a class="source" href="utils.html">
+                  utils.js
+                </a>
+              
+            </div>
           </div>
         </li>
       </ul>
@@ -140,7 +142,7 @@ Utils = {</pre></div></div>
     <span class="hljs-keyword">try</span> {
       <span class="hljs-keyword">return</span> htmlToText.fromString(html, opts);
     } <span class="hljs-keyword">catch</span> (ex) {
-      <span class="hljs-keyword">return</span> Utils.Logger.error(`Could not make plain-text version from html: ${ex.message}`);
+      <span class="hljs-keyword">return</span> Utils.Logger.error(<span class="hljs-string">`Could not make plain-text version from html: <span class="hljs-subst">${ex.message}</span>`</span>);
     }
   },
 
@@ -170,9 +172,9 @@ fallback if not.</p>
 
     opts = _.extend({}, defaults, opts);
 
-    <span class="hljs-keyword">const</span> res = [<span class="hljs-string">'info'</span>, <span class="hljs-string">'warn'</span>, <span class="hljs-string">'error'</span>].map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(method)</span> </span>{
+    <span class="hljs-keyword">const</span> res = [<span class="hljs-string">'info'</span>, <span class="hljs-string">'warn'</span>, <span class="hljs-string">'error'</span>].map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">method</span>) </span>{
       <span class="hljs-keyword">if</span> (!_.has(logger, method)) {
-        <span class="hljs-built_in">console</span>.warn(`The injected logger must support the ${method} method.`);
+        <span class="hljs-built_in">console</span>.warn(<span class="hljs-string">`The injected logger must support the <span class="hljs-subst">${method}</span> method.`</span>);
         <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
       }
       <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
@@ -200,7 +202,7 @@ if we’re in silent mode.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> (opts.suppressInfo === <span class="hljs-literal">true</span>) {
-      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.Logger.info = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{};
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.Logger.info = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{};
     }
   },
 
@@ -250,7 +252,7 @@ if we’re in silent mode.</p>
       <span class="hljs-keyword">return</span> content;
 
     } <span class="hljs-keyword">catch</span> (ex) {
-      Utils.Logger.error(`Could not add CSS to ${template.name}: ${ex.message}`, TAG);
+      Utils.Logger.error(<span class="hljs-string">`Could not add CSS to <span class="hljs-subst">${template.name}</span>: <span class="hljs-subst">${ex.message}</span>`</span>, TAG);
       <span class="hljs-keyword">return</span> html;
     }
   },
@@ -259,7 +261,7 @@ if we’re in silent mode.</p>
     <span class="hljs-keyword">return</span> <span class="hljs-string">'&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;\n'</span> + html;
   },
 
-  readFile: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(relativePathFromApp)</span> </span>{
+  readFile: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">relativePathFromApp</span>) </span>{
     <span class="hljs-keyword">const</span> file = path.join(ROOT, relativePathFromApp);
 
     <span class="hljs-keyword">try</span> {
@@ -268,7 +270,7 @@ if we’re in silent mode.</p>
       });
 
     } <span class="hljs-keyword">catch</span> (ex) {
-      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Meteor.Error(<span class="hljs-number">500</span>, `Could not find file: ${file}`, ex.message);
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Meteor.Error(<span class="hljs-number">500</span>, <span class="hljs-string">`Could not find file: <span class="hljs-subst">${file}</span>`</span>, ex.message);
     }
   },</pre></div></div>
             
@@ -285,7 +287,7 @@ if we’re in silent mode.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  toCSS: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(scss)</span> </span>{
+            <div class="content"><div class='highlight'><pre>  toCSS: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">scss</span>) </span>{
     <span class="hljs-keyword">if</span> (!Package[<span class="hljs-string">'chrisbutler:node-sass'</span>]) {
       Utils.Logger.warn(<span class="hljs-string">'Sass support is opt-in since lookback:emails@0.5.0. Please add chrisbutler:node-sass from Atmosphere and try again.'</span>, TAG);
       <span class="hljs-keyword">return</span> Utils.readFile(scss);
@@ -301,8 +303,8 @@ if we’re in silent mode.</p>
       }).css.toString();
 
     } <span class="hljs-keyword">catch</span> (ex) {
-      <span class="hljs-built_in">console</span>.error(`Sass failed to compile: ${ex.message}`);
-      <span class="hljs-keyword">return</span> <span class="hljs-built_in">console</span>.error(`In ${ex.file || scss} at line ${ex.line}, column ${ex.column}`);
+      <span class="hljs-built_in">console</span>.error(<span class="hljs-string">`Sass failed to compile: <span class="hljs-subst">${ex.message}</span>`</span>);
+      <span class="hljs-keyword">return</span> <span class="hljs-built_in">console</span>.error(<span class="hljs-string">`In <span class="hljs-subst">${ex.file || scss}</span> at line <span class="hljs-subst">${ex.line}</span>, column <span class="hljs-subst">${ex.column}</span>`</span>);
     }
   }
 };</pre></div></div>
